@@ -1,14 +1,12 @@
 import React from 'react';
 import NewTodoTextInput from './index';
 // eslint-disable-next-line import/named
-import { fireEvent, render, RenderResult } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { rootStore } from '../../store';
 
 test('NewTodoTextInput', () => {
-  const renderComponent = (): RenderResult => {
-    return render(<NewTodoTextInput appStore={rootStore} />);
-  };
-  const screen = renderComponent();
+  render(<NewTodoTextInput appStore={rootStore} />);
+
   const input = screen.getByTestId('new-todo-input-text') as HTMLInputElement;
 
   // Header big text

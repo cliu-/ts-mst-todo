@@ -1,8 +1,9 @@
 import React, { createRef } from 'react';
 import { observer } from 'mobx-react-lite';
+import * as UUID from 'short-uuid';
 import { Layout } from './style';
 
-import { RootStoreProps } from '../../store';
+import { RootStoreProps, Todo } from '../../store';
 
 const NewTodoTextInput: React.FC<RootStoreProps> = observer(({ appStore }) => {
   const textInput: React.RefObject<HTMLInputElement> =
@@ -11,7 +12,9 @@ const NewTodoTextInput: React.FC<RootStoreProps> = observer(({ appStore }) => {
   function addTodo(e: React.KeyboardEvent<HTMLInputElement>): void {
     if (textInput.current === null) return;
     if (e.key === 'Enter' && textInput.current.value.trim().length > 0) {
-      appStore.addTodo(textInput.current.value);
+      appStore.add(
+        Todo.create({ id: UUID.generate(), bodyText: textInput.current.value })
+      );
       textInput.current.value = '';
     }
   }

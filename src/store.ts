@@ -1,5 +1,7 @@
 import * as mst from 'mobx-state-tree';
 
+export type Routes = '/' | '/active' | '/completed';
+
 export const Todo = mst.types
   .model('Todo', {
     id: mst.types.identifier,
@@ -9,6 +11,8 @@ export const Todo = mst.types
   .actions((self) => ({
     updateText: (newText: string) => (self.bodyText = newText),
     toggleCompleted: () => (self.completed = !self.completed),
+    complete: () => (self.completed = true),
+    active: () => (self.completed = false),
   }));
 
 export const RootStore = mst.types

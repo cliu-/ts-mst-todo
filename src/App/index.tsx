@@ -1,48 +1,33 @@
-import React, { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
+import React from 'react';
+import { observer } from 'mobx-react-lite';
+import { useLocation } from 'react-router-dom';
+import * as history from 'history';
 import NewTodoInput from './NewTodoInput';
 import TodoList from './TodoList';
 import UnderBar from './UnderBar';
 import Copyright from './Copyright';
-import { RouteComponentProps } from 'react-router-dom';
 import { Layout } from './style';
-import {
-  AppState,
-  recoilState,
-  LocalStorageKey,
-  Routes,
-} from '../dataStructure';
-import { rootStore } from '../store';
+import { rootStore, RootStoreProps, Routes } from '../store';
+import { NotFound } from './NotFound';
 
-interface Props {
-  path: Routes;
-}
-
-const App: React.FC<Props & RouteComponentProps> = ({ path }) => {
-  const appState = useRecoilValue<AppState>(recoilState);
-
-  // if appState has changes, save it LocalStorage.
-  useEffect((): void => {
-    window.localStorage.setItem(
-      LocalStorageKey.APP_STATE,
-      JSON.stringify(appState) // convert JavaScript Object to string
-    );
-  }, [appState]);
-
-  return (
+const App: React.FC<RootStoreProps> = observer(({ appStore }) => {
+  const { pathname } = useLocation<history.Location>();
+  return Routes.includes(pathname) ? (
     <Layout>
       <section className="todoapp">
         <NewTodoInput appStore={rootStore} />
-        {appState.todoList.length ? (
+        {appStore.todoList.length ? (
           <>
-            <TodoList path={path} />
-            <UnderBar path={path} />
+            <TodoList path={pathname} appStore={appStore} />
+            <UnderBar path={pathname} appStore={appStore} />
           </>
         ) : null}
       </section>
       <Copyright />
     </Layout>
+  ) : (
+    <NotFound />
   );
-};
+});
 
 export default App;

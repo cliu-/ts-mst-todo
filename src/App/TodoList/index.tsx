@@ -2,9 +2,9 @@ import React, { ReactElement } from 'react';
 import { observer } from 'mobx-react-lite';
 import Item from './Item';
 import { Layout } from './style';
-import { ITodo, RootStoreProps, Routes } from '../../store';
+import { ITodo, PathParam, RootStoreProps } from '../../store';
 
-const TodoList: React.FC<RootStoreProps & { path: Routes }> = observer(
+const TodoList: React.FC<RootStoreProps & PathParam> = observer(
   ({ appStore, path }) => {
     return (
       <Layout>

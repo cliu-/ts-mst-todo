@@ -1,9 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
-import { Routes } from '../../../dataStructure';
+import { PathParam } from '../../../store';
 
-const FilterLink: React.FC<{ path: Routes }> = observer(({ path }) => {
+const FilterLink: React.FC<PathParam> = observer(({ path }) => {
   return (
     <ul className="filters">
       <li>

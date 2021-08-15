@@ -2,9 +2,9 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import FilterLink from './FilterLink';
 import { Layout } from './style';
-import { RootStoreProps, Routes } from '../../store';
+import { PathParam, RootStoreProps } from '../../store';
 
-const UnderBar: React.FC<{ path: Routes } & RootStoreProps> = observer(
+const UnderBar: React.FC<RootStoreProps & PathParam> = observer(
   ({ path, appStore }) => {
     return (
       <Layout>

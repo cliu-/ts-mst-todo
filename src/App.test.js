@@ -1,39 +1,24 @@
-import { RecoilRoot } from 'recoil';
 import ReactDOM from 'react-dom';
+import * as UUID from 'short-uuid';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import App from './App';
-import { recoilState } from './dataStructure';
+import { RootStore, Todo } from './store';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
 
-  const todo = {
-    todoList: [
-      {
-        id: 'TsHx9eEN5Y4A',
-        bodyText: 'monster',
-        completed: false,
-      },
-      {
-        id: 'ba91OwrK0Dt8',
-        bodyText: 'boss black',
-        completed: false,
-      },
-      {
-        id: 'QwejYipEf5nk',
-        bodyText: 'caffe latte',
-        completed: false,
-      },
-    ],
-  };
+  const testAppStore = RootStore.create({
+    todoList: ['monster', 'boss black', 'caffe latte'].map((text) =>
+      Todo.create({ id: UUID.generate(), bodyText: text })
+    ),
+  });
 
   ReactDOM.render(
-    <RecoilRoot
-      initializeState={({ set }) => {
-        set(recoilState, todo);
-      }}
-    >
-      <App path="/" />
-    </RecoilRoot>,
+    <Router>
+      <Route path="/">
+        <App appStore={testAppStore} />
+      </Route>
+    </Router>,
     div
   );
 

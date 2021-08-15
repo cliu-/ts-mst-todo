@@ -1,6 +1,7 @@
 import * as mst from 'mobx-state-tree';
 
-export type Routes = '/' | '/active' | '/completed';
+export const Routes = ['/', '/active', '/completed'];
+export type PathParam = { path: string };
 
 export const Todo = mst.types
   .model('Todo', {

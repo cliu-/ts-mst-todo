@@ -1,12 +1,9 @@
 import React from 'react';
-import { Link } from '@reach/router';
+import { observer } from 'mobx-react-lite';
+import { Link } from 'react-router-dom';
 import { Routes } from '../../../dataStructure';
 
-interface Props {
-  path: Routes;
-}
-
-const FilterLink: React.FC<Props> = ({ path }) => {
+const FilterLink: React.FC<{ path: Routes }> = observer(({ path }) => {
   return (
     <ul className="filters">
       <li>
@@ -38,6 +35,6 @@ const FilterLink: React.FC<Props> = ({ path }) => {
       </li>
     </ul>
   );
-};
+});
 
 export default FilterLink;

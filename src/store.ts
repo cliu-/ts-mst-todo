@@ -19,6 +19,14 @@ export const RootStore = mst.types
   .model('RootStore', {
     todoList: mst.types.optional(mst.types.array(Todo), []),
   })
+  .views((self) => ({
+    get activeCount() {
+      return self.todoList.filter((todo) => !todo.completed).length;
+    },
+    get completedCount() {
+      return self.todoList.filter((todo) => todo.completed).length;
+    },
+  }))
   .actions((self) => ({
     find: (id: string): ITodo | undefined => {
       return self.todoList.find((e) => e.id === id);
@@ -27,6 +35,14 @@ export const RootStore = mst.types
   .actions((self) => ({
     add: (todo: ITodo) => self.todoList.push(todo),
     delete: (todo: ITodo) => self.todoList.remove(todo),
+    clearCompleted: (): void => {
+      if (self.completedCount > 0) {
+        const allCompleted = self.todoList.filter(
+          (todo: ITodo): boolean => todo.completed === true
+        );
+        allCompleted.forEach((todo: ITodo) => self.todoList.remove(todo));
+      }
+    },
   }));
 
 type InstanceTodo = mst.Instance<typeof Todo>;

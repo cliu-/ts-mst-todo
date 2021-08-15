@@ -34,7 +34,7 @@ export const RootStore = mst.types
     },
   }))
   .actions((self) => ({
-    add: (todo: ITodo) => self.todoList.push(todo),
+    add: (todo: ITodo) => self.todoList.unshift(todo),
     delete: (todo: ITodo) => self.todoList.remove(todo),
     clearCompleted: (): void => {
       if (self.completedCount > 0) {

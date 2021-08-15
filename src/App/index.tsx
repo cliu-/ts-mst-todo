@@ -5,7 +5,6 @@ import * as history from 'history';
 import NewTodoInput from './NewTodoInput';
 import TodoList from './TodoList';
 import UnderBar from './UnderBar';
-import Copyright from './Copyright';
 import { Layout } from './style';
 import { rootStore, RootStoreProps, Routes } from '../store';
 import { NotFound } from './NotFound';
@@ -23,7 +22,6 @@ const App: React.FC<RootStoreProps> = observer(({ appStore }) => {
           </>
         ) : null}
       </section>
-      <Copyright />
     </Layout>
   ) : (
     <NotFound />

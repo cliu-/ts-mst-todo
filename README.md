@@ -1,3 +1,17 @@
+# Todo Example with Typescript and Mobx-State-Tree
+
+**The project is derived from [create-react-app-typescript-todo-example-2021](https://github.com/laststance/create-react-app-typescript-todo-example-2021).**
+
+What did I do:
+- Migrate the state management from Recoil to Mobx-State-Tree.
+- Migrate the route library from reach-router to react-router-dom V5.
+- Update some unit tests.
+- Add unit tests for UnderBar component.
+- Add unit tests for App component.
+- Remove the Copyright.
+
+**All credits belong to the origin project authors.**
+
 # Create React App TypeScript Todo Example 2021
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/94ad28c3-2ccd-40b2-9b9f-35ab89148f43/deploy-status)](https://app.netlify.com/sites/create-react-app-typescript-todo-example/deploys)

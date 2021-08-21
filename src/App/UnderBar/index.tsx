@@ -8,8 +8,8 @@ const UnderBar: React.FC<RootStoreProps & PathParam> = observer(
   ({ path, appStore }) => {
     return (
       <Layout>
-        <footer className="footer">
-          <span className="todo-count">
+        <footer className="footer" data-testid="todo-footer">
+          <span className="todo-count" data-testid="todo-count">
             <strong data-cy="remaining-uncompleted-todo-count">
               {appStore.activeCount}
             </strong>{' '}
@@ -21,6 +21,7 @@ const UnderBar: React.FC<RootStoreProps & PathParam> = observer(
             <button
               onClick={appStore.clearCompleted}
               className="clear-completed"
+              data-testid="todo-comlelted-clear"
               data-cy="clear-completed-button"
             >
               Clear completed

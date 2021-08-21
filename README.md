@@ -3,6 +3,7 @@
 **The project is derived from [create-react-app-typescript-todo-example-2021](https://github.com/laststance/create-react-app-typescript-todo-example-2021).**
 
 What did I do:
+- Eject the project
 - Migrate the state management from Recoil to Mobx-State-Tree.
 - Migrate the route library from reach-router to react-router-dom V5.
 - Update some unit tests.

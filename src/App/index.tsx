@@ -6,7 +6,7 @@ import NewTodoInput from './NewTodoInput';
 import TodoList from './TodoList';
 import UnderBar from './UnderBar';
 import { Layout } from './style';
-import { rootStore, RootStoreProps, Routes } from '../store';
+import { RootStoreProps, Routes } from '../store';
 import { NotFound } from './NotFound';
 
 const App: React.FC<RootStoreProps> = observer(({ appStore }) => {
@@ -14,7 +14,7 @@ const App: React.FC<RootStoreProps> = observer(({ appStore }) => {
   return Routes.includes(pathname) ? (
     <Layout>
       <section className="todoapp">
-        <NewTodoInput appStore={rootStore} />
+        <NewTodoInput appStore={appStore} />
         {appStore.todoList.length ? (
           <>
             <TodoList path={pathname} appStore={appStore} />

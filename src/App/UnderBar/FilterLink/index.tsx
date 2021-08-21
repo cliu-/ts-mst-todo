@@ -5,10 +5,11 @@ import { PathParam } from '../../../store';
 
 const FilterLink: React.FC<PathParam> = observer(({ path }) => {
   return (
-    <ul className="filters">
+    <ul className="filters" data-testid="filters">
       <li>
         <Link
           data-cy="all-filter"
+          data-testid="all-filter"
           className={path === '/' ? 'selected' : ''}
           to="/"
         >
@@ -18,6 +19,7 @@ const FilterLink: React.FC<PathParam> = observer(({ path }) => {
       <li>
         <Link
           data-cy="active-filter"
+          data-testid="active-filter"
           className={path === '/active' ? 'selected' : ''}
           to="/active"
         >
@@ -27,6 +29,7 @@ const FilterLink: React.FC<PathParam> = observer(({ path }) => {
       <li>
         <Link
           data-cy="completed-filter"
+          data-testid="completed-filter"
           className={path === '/completed' ? 'selected' : ''}
           to="/completed"
         >

@@ -11,6 +11,8 @@ What did I do:
 - Add unit tests for App component.
 - Remove the Copyright.
 
+In contrast with Mobx-State-Tree, there is another project with Mobx [ts-mobx-todo](https://github.com/cliu-/ts-mobx-todo).
+
 **All credits belong to the origin project authors.**
 
 # Create React App TypeScript Todo Example 2021
